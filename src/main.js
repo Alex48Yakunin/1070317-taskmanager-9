@@ -1,4 +1,4 @@
-const templateMenu = () => { 
+const templateMenu = () => {
   return `<section class="control__btn-wrap">
 <input
   type="radio"
@@ -114,20 +114,22 @@ const templateMainFilter = () => {
 </section>`;
 };
 
+const templateBoard = () => {
+  return `<section class="board container">
+   <div class="board__tasks">
+   </div>
+   </section>`;
+};
+
 const templateBoardFilter = () => {
   return `<div class="board__filter-list">
   <a href="#" class="board__filter">SORT BY DEFAULT</a>
   <a href="#" class="board__filter">SORT BY DATE up</a>
   <a href="#" class="board__filter">SORT BY DATE down</a>
   </div>`;
-}
+};
 
-const templateBoard = () => {
- return `<section class="board container">
-  <div class="board__tasks">
-  </div>
-  </section>`;
-}
+console.log(templateBoardFilter());
 
 const templateCard = () => {
   return `<article class="card card--black">
@@ -494,53 +496,17 @@ const nodeBoardFilter = createTemplate(templateBoardFilter());
 const nodeCard = createTemplate(templateCard());
 const nodeEditTask = createTemplate(templateEditTask());
 const nodeLoadMore = createTemplate(templateLoadMore());
-console.log(nodeEditTask);
+
 const renderTemplate = (container, node) => {
   container.appendChild(node);
 };
 
-renderTemplate(menuContainer,nodeMenu);
-renderTemplate(searchContainer,nodeSearch);
-renderTemplate(mainFilterContainer,nodeMainFilter);
-renderTemplate(mainFilterContainer,nodeBoard);
-renderTemplate(boardFilterContainer,nodeBoardFilter);
-renderTemplate(EditTaskContainer,nodeEditTask);
-renderTemplate(cardContainer,nodeCard);
-renderTemplate(LoadMoreContainer,nodeLoadMore);
-
-
-
-
-
-
-// const render = (container, layout) => {
-
-//   const block = document.querySelector(container);
-//   const div = document.createElement('section');
-//   div.innerHTML = layout.trim();
-//   block.appendChild(div.firstChild);
-
-// };
-
-// const renderPrepend = (container, layout) => {
-
-//   const block = document.querySelector(container);
-//   const div = document.createElement('section');
-//   div.innerHTML = layout.trim();
-//   block.prepend(div.firstChild);
-
-// };
-
-
-
-
-// render(`.main__control`, getTemplate.menu);
-// render(`.main`, getTemplate.search);
-// render(`.main`, getTemplate.mainFilter);
-// render(`.main`, getTemplate.board);
-// renderPrepend(`.board`, getTemplate.boardFilter);
-// render(`.board__tasks`, getTemplate.card);
-// render(`.card`, getTemplate.cardForm);
-// render(`.board`, getTemplate.loadMore);
-
+renderTemplate(menuContainer, nodeMenu);
+renderTemplate(searchContainer, nodeSearch);
+renderTemplate(mainFilterContainer, nodeMainFilter);
+renderTemplate(boardContainer, nodeBoard);
+renderTemplate(boardFilterContainer, nodeBoardFilter);
+renderTemplate(EditTaskContainer, nodeEditTask);
+renderTemplate(cardContainer, nodeCard);
+renderTemplate(LoadMoreContainer, nodeLoadMore);
 
