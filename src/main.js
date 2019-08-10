@@ -446,7 +446,7 @@ const LoadMoreContainer = document.querySelector(`.board`);
 
 const createTemplate = (stringTemplate) => { // создадим узел
   const template = document.createElement(`template`);
-  template.innerHtml = stringTemplate;
+  template.innerHTML = stringTemplate;
   return template.content;
 };
 
@@ -458,7 +458,6 @@ const nodeCard = createTemplate(templateCard);
 const nodeEditTask = createTemplate(templateEditTask);
 const nodeLoadMore = createTemplate(templateLoadMore);
 
-console.log(nodeMenu);
 const renderTemplate = (container, node) => {
   container.appendChild(node);
 };
