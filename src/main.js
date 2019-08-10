@@ -216,14 +216,6 @@ render(`.main`, getTemplate.search);
 render(`.main`, getTemplate.mainFilter);
 render(`.main`, getTemplate.board);
 renderPrepend(`.board`, getTemplate.boardFilter);
-
-for (let i = 0; i <= 3; i++) { 
-
-  render(`.board__tasks`, getTemplate.card);
-
-}
-
-
-
+render(`.board__tasks`, getTemplate.card);
 render(`.card`, getTemplate.cardForm);
 render(`.board`, getTemplate.loadMore);
