@@ -455,6 +455,7 @@ const createTemplate = (stringTemplate) => { // создадим узел
 const nodeMenu = createTemplate(templateMenu());
 const nodeSearch = createTemplate(templateSearch());
 const nodeMainFilter = createTemplate(templateMainFilter());
+const nodeBoard = createTemplate(templateBoard());
 const nodeBoardFilter = createTemplate(templateBoardFilter());
 const nodeCard = createTemplate(templateCard());
 const nodeEditTask = createTemplate(templateEditTask());
@@ -467,6 +468,7 @@ const renderTemplate = (container, node) => {
 renderTemplate(menuContainer,nodeMenu);
 renderTemplate(searchContainer,nodeSearch);
 renderTemplate(mainFilterContainer,nodeMainFilter);
+renderTemplate(mainFilterContainer,nodeBoard);
 renderTemplate(boardFilterContainer,nodeBoardFilter);
 renderTemplate(cardContainer,nodeCard);
 renderTemplate(EditTaskContainer,nodeEditTask);
