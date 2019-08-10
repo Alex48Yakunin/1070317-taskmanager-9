@@ -129,7 +129,7 @@ const templateBoardFilter = () => {
   </div>`;
 };
 
-console.log(templateBoardFilter());
+
 
 const templateCard = () => {
   return `<article class="card card--black">
@@ -473,40 +473,29 @@ const templateLoadMore = () => {
   return `<button class="load-more" type="button">load more</button>`
 };
 
-const menuContainer = document.querySelector(`.main__control`);
-const searchContainer = document.querySelector(`.main`);
-const mainFilterContainer = document.querySelector(`.main`);
-const boardContainer = document.querySelector(`.main`);
-const boardFilterContainer = document.querySelector(`.board`);
-const cardContainer = document.querySelector(`.board__tasks`);
-const EditTaskContainer = document.querySelector(`.board__tasks`);
-const LoadMoreContainer = document.querySelector(`.board`);
-
-const createTemplate = (stringTemplate) => { // создадим узел
-  const template = document.createElement(`template`);
-  template.innerHTML = stringTemplate;
-  return template.content;
-};
-
-const nodeMenu = createTemplate(templateMenu());
-const nodeSearch = createTemplate(templateSearch());
-const nodeMainFilter = createTemplate(templateMainFilter());
-const nodeBoard = createTemplate(templateBoard());
-const nodeBoardFilter = createTemplate(templateBoardFilter());
-const nodeCard = createTemplate(templateCard());
-const nodeEditTask = createTemplate(templateEditTask());
-const nodeLoadMore = createTemplate(templateLoadMore());
 
 const renderTemplate = (container, node) => {
-  container.appendChild(node);
+  const block = document.querySelector(container);
+  const div = document.createElement('section');
+  div.innerHTML = node.trim();
+  block.appendChild(div.firstChild);
+};
+const renderTemplatePrepend = (container, node) => {
+  const block = document.querySelector(container);
+  const div = document.createElement('section');
+  div.innerHTML = node.trim();
+  block.prepend(div.firstChild);
 };
 
-renderTemplate(menuContainer, nodeMenu);
-renderTemplate(searchContainer, nodeSearch);
-renderTemplate(mainFilterContainer, nodeMainFilter);
-renderTemplate(boardContainer, nodeBoard);
-renderTemplate(boardFilterContainer, nodeBoardFilter);
-renderTemplate(EditTaskContainer, nodeEditTask);
-renderTemplate(cardContainer, nodeCard);
-renderTemplate(LoadMoreContainer, nodeLoadMore);
+
+renderTemplate(`.main__control`, templateMenu());
+renderTemplate(`.main`, templateSearch());
+renderTemplate(`.main`, templateMainFilter());
+renderTemplate(`.main`, templateBoard());
+renderTemplate(`.board__tasks`, templateEditTask());
+for (let i = 0; i < 3; i++) {
+  renderTemplate(`.board__tasks`, templateCard());
+};
+renderTemplatePrepend(`.board`, templateBoardFilter());
+renderTemplate(`.board`, templateLoadMore());
 
