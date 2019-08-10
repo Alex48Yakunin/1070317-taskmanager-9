@@ -1,4 +1,4 @@
-const templateMenu = () => {
+const templateMenu = () => { 
   return `<section class="control__btn-wrap">
 <input
   type="radio"
@@ -26,8 +26,10 @@ const templateMenu = () => {
 <label for="control__statistic" class="control__label"
   >STATISTICS</label
 >
-</section>`
+</section>`;
 };
+
+
 
 const templateSearch = () => {
   return `<section class="main__search search container">
@@ -38,7 +40,7 @@ const templateSearch = () => {
     placeholder="START TYPING — SEARCH BY WORD, #HASHTAG OR DATE"
   />
   <label class="visually-hidden" for="search__input">Search</label>
-  </section>`
+  </section>`;
 };
 
 const templateMainFilter = () => {
@@ -109,7 +111,7 @@ const templateMainFilter = () => {
 <label for="filter__archive" class="filter__label"
   >Archive <span class="filter__archive-count">115</span></label
 >
-</section>`
+</section>`;
 };
 
 const templateBoardFilter = () => {
@@ -117,14 +119,14 @@ const templateBoardFilter = () => {
   <a href="#" class="board__filter">SORT BY DEFAULT</a>
   <a href="#" class="board__filter">SORT BY DATE up</a>
   <a href="#" class="board__filter">SORT BY DATE down</a>
-  </div>`
+  </div>`;
 }
 
 const templateBoard = () => {
-  `<section class="board container">
+ return `<section class="board container">
   <div class="board__tasks">
   </div>
-  </section>`
+  </section>`;
 }
 
 const templateCard = () => {
@@ -192,11 +194,11 @@ const templateCard = () => {
     </div>
   </div>
   </div>
-  </article>`
+  </article>`;
 };
 
 const templateEditTask = () => {
-  return `                <div class="card__settings">
+  return `<div class="card__settings">
   <div class="card__details">
     <div class="card__dates">
       <button class="card__date-deadline-toggle" type="button">
@@ -428,7 +430,7 @@ const templateEditTask = () => {
 <div class="card__status-btns">
   <button class="card__save" type="submit">save</button>
   <button class="card__delete" type="button">delete</button>
-</div>`
+</div>`;
 };
 
 const templateLoadMore = () => {
@@ -450,13 +452,13 @@ const createTemplate = (stringTemplate) => { // создадим узел
   return template.content;
 };
 
-const nodeMenu = createTemplate(templateMenu);
-const nodeSearch = createTemplate(templateSearch);
-const nodeMainFilter = createTemplate(templateMainFilter);
-const nodeBoardFilter = createTemplate(templateBoardFilter);
-const nodeCard = createTemplate(templateCard);
-const nodeEditTask = createTemplate(templateEditTask);
-const nodeLoadMore = createTemplate(templateLoadMore);
+const nodeMenu = createTemplate(templateMenu());
+const nodeSearch = createTemplate(templateSearch());
+const nodeMainFilter = createTemplate(templateMainFilter());
+const nodeBoardFilter = createTemplate(templateBoardFilter());
+const nodeCard = createTemplate(templateCard());
+const nodeEditTask = createTemplate(templateEditTask());
+const nodeLoadMore = createTemplate(templateLoadMore());
 
 const renderTemplate = (container, node) => {
   container.appendChild(node);
