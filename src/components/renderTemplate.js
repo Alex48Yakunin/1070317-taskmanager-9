@@ -37,15 +37,19 @@ const renderTemplatePrepend = (container, node) => {
   block.prepend(div.firstChild);
 };
 
-renderTemplate(`.main__control`, menu);
-renderTemplate(`.main`, search);
-renderTemplate(`.main`, mainFilter);
-renderTemplate(`.main`, board);
-renderTemplate(`.board__tasks`, editTask);
-for (let i = 0; i < 3; i++) {
-  renderTemplate(`.board__tasks`, card);
-}
-renderTemplatePrepend(`.board`, boardFilter);
-renderTemplate(`.board`, loadMore);
+const render = () => {
+  renderTemplate(`.main__control`, menu());
+  renderTemplate(`.main`, search());
+  renderTemplate(`.main`, mainFilter());
+  renderTemplate(`.main`, board());
+  renderTemplate(`.board__tasks`, editTask());
+  for (let i = 0; i < 3; i++) {
+    renderTemplate(`.board__tasks`, card());
+  }
+  renderTemplatePrepend(`.board`, boardFilter());
+  renderTemplate(`.board`, loadMore());
+};
 
-
+export {
+  render as renderTemplate
+};
