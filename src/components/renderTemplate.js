@@ -1,4 +1,7 @@
 import {
+  getTasc
+} from './getTasc.js';
+import {
   menu
 } from './menu.js';
 import {
@@ -44,7 +47,7 @@ const render = () => {
   renderTemplate(`.main`, board());
   renderTemplate(`.board__tasks`, editTask());
   for (let i = 0; i < 3; i++) {
-    renderTemplate(`.board__tasks`, card());
+    renderTemplate(`.board__tasks`, card(getTasc()));
   }
   renderTemplatePrepend(`.board`, boardFilter());
   renderTemplate(`.board`, loadMore());
