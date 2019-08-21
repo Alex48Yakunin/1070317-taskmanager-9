@@ -19,6 +19,4 @@ const templateMainFilter = (getFilter) => {
     </section>`;
 };
 
-export {
-  templateMainFilter as mainFilter
-};
+export {templateMainFilter as mainFilter};

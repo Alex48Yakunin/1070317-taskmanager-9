@@ -26,8 +26,8 @@ const getTasc = () => ({
     `green`,
     `pink`
   ][Math.floor(Math.random() * 5)],
-  isFavorite: true,
-  isArchive: false,
+  isFavorite: Boolean(Math.round(Math.random())),
+  isArchive: Boolean(Math.round(Math.random())),
 });
 
 

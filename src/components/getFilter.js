@@ -49,7 +49,9 @@ const getFilter = [{
   {
     title: `archive`,
     count() {
-
+      return dataCard.filter((card) => {
+        return card.isArchive === true;
+      }).length;
     }
   },
 
