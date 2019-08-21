@@ -37,7 +37,7 @@ const getFilter = [{
   {
     title: `tags`,
     count() {
-
+      
     }
   },
   {
@@ -56,6 +56,4 @@ const getFilter = [{
 ];
 
 
-export {
-  getFilter
-};
+export {getFilter};
