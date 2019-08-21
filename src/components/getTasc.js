@@ -31,6 +31,4 @@ const getTasc = () => ({
 });
 
 
-export {
-  getTasc
-};
+export {getTasc};

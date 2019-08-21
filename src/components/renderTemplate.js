@@ -1,30 +1,15 @@
-import {
-  getTasc
-} from './getTasc.js';
-import {
-  menu
-} from './menu.js';
-import {
-  search
-} from './search.js';
-import {
-  mainFilter
-} from './mainFilter.js';
-import {
-  board
-} from './board.js';
-import {
-  editTask
-} from './editTask.js';
-import {
-  card
-} from './card.js';
-import {
-  boardFilter
-} from './boardFilter.js';
-import {
-  loadMore
-} from './loadMore.js';
+
+import {getTasc} from './getTasc.js';
+import {menu} from './menu.js';
+import {search} from './search.js';
+import {mainFilter} from './mainFilter.js';
+import {board} from './board.js';
+import {editTask} from './editTask.js';
+import {card} from './card.js';
+import {boardFilter} from './boardFilter.js';
+import {loadMore} from './loadMore.js';
+import {dataCard} from './data.js';
+import {getFilter} from './getFilter.js';
 
 const renderTemplate = (container, node) => {
   const block = document.querySelector(container);
@@ -43,16 +28,17 @@ const renderTemplatePrepend = (container, node) => {
 const render = () => {
   renderTemplate(`.main__control`, menu());
   renderTemplate(`.main`, search());
-  renderTemplate(`.main`, mainFilter());
+  document.addEventListener(`DOMContentLoaded`, renderTemplate(`.main`, mainFilter(getFilter)));
   renderTemplate(`.main`, board());
-  renderTemplate(`.board__tasks`, editTask());
-  for (let i = 0; i < 3; i++) {
-    renderTemplate(`.board__tasks`, card(getTasc()));
+  for (let value of dataCard) {
+    if (value === editTask) {
+      renderTemplate(`.board__tasks`, editTask());
+    } else {
+      renderTemplate(`.board__tasks`, card(getTasc()));
+    }
   }
   renderTemplatePrepend(`.board`, boardFilter());
   renderTemplate(`.board`, loadMore());
 };
 
-export {
-  render as renderTemplate
-};
+export {render as renderTemplate};
