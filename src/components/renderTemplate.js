@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 
 import {getTasc} from './getTasc.js';
 import {menu} from './menu.js';
@@ -30,15 +31,28 @@ const render = () => {
   renderTemplate(`.main`, search());
   document.addEventListener(`DOMContentLoaded`, renderTemplate(`.main`, mainFilter(getFilter)));
   renderTemplate(`.main`, board());
-  for (let value of dataCard) {
-    if (value === editTask) {
+  for (let key in dataCard) {
+    if (key == 0) {
       renderTemplate(`.board__tasks`, editTask());
     } else {
-      renderTemplate(`.board__tasks`, card(getTasc()));
+      if (key <= 8) {
+        renderTemplate(`.board__tasks`, card(getTasc()));
+      }
     }
   }
   renderTemplatePrepend(`.board`, boardFilter());
   renderTemplate(`.board`, loadMore());
+  document.addEventListener(`DOMContentLoaded`, function () {
+    document.getElementById(`load-more`).addEventListener(`click`, function () {
+      for (let key in dataCard) {
+        if (key > 8) {
+          renderTemplate(`.board__tasks`, card(getTasc()));
+          document.getElementById(`load-more`).style.display = `none`;
+        }
+      }
+    });
+  });
+
 };
 
 export {render as renderTemplate};

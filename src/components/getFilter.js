@@ -37,13 +37,25 @@ const getFilter = [{
   {
     title: `tags`,
     count() {
-      
+      const arrayCard = dataCard.filter((card, i) => {
+        if (i === 0) {
+          return false;
+        }
+        return card.tags.size !== 0;
+      });
+      return arrayCard.length;
     }
   },
   {
     title: `repeating`,
     count() {
-
+      const arrayCard = dataCard.filter((card, i) => {
+        if (i === 0) {
+          return false;
+        }
+        return Object.keys(card.repeatingDays).some((day) => card.repeatingDays[day]);
+      });
+      return arrayCard.length;
     }
   },
   {

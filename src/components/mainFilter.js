@@ -9,7 +9,7 @@ const templateMainFilter = (getFilter) => {
     checked
     />
     <label for="filter__all" class="filter__label">
-    ${filter.title}<span class="filter__${filter.title}-count">${filter.count()}</span></label
+    ${filter.title}&#160;<span class="filter__${filter.title}-count">${filter.count()}</span></label
     >`
   ));
   return `<section class="main__filter filter container">
