@@ -1,27 +1,16 @@
-import {
-  menu
-} from './menu.js';
-import {
-  search
-} from './search.js';
-import {
-  mainFilter
-} from './mainFilter.js';
-import {
-  board
-} from './board.js';
-import {
-  editTask
-} from './editTask.js';
-import {
-  card
-} from './card.js';
-import {
-  boardFilter
-} from './boardFilter.js';
-import {
-  loadMore
-} from './loadMore.js';
+/* eslint-disable eqeqeq */
+
+import {getTasc} from './getTasc.js';
+import {menu} from './menu.js';
+import {search} from './search.js';
+import {mainFilter} from './mainFilter.js';
+import {board} from './board.js';
+import {editTask} from './editTask.js';
+import {card} from './card.js';
+import {boardFilter} from './boardFilter.js';
+import {loadMore} from './loadMore.js';
+import {dataCard} from './data.js';
+import {getFilter} from './getFilter.js';
 
 const renderTemplate = (container, node) => {
   const block = document.querySelector(container);
@@ -40,16 +29,30 @@ const renderTemplatePrepend = (container, node) => {
 const render = () => {
   renderTemplate(`.main__control`, menu());
   renderTemplate(`.main`, search());
-  renderTemplate(`.main`, mainFilter());
+  document.addEventListener(`DOMContentLoaded`, renderTemplate(`.main`, mainFilter(getFilter)));
   renderTemplate(`.main`, board());
-  renderTemplate(`.board__tasks`, editTask());
-  for (let i = 0; i < 3; i++) {
-    renderTemplate(`.board__tasks`, card());
+  for (let key in dataCard) {
+    if (key == 0) {
+      renderTemplate(`.board__tasks`, editTask());
+    } else {
+      if (key <= 8) {
+        renderTemplate(`.board__tasks`, card(getTasc()));
+      }
+    }
   }
   renderTemplatePrepend(`.board`, boardFilter());
   renderTemplate(`.board`, loadMore());
+  document.addEventListener(`DOMContentLoaded`, function () {
+    document.getElementById(`load-more`).addEventListener(`click`, function () {
+      for (let key in dataCard) {
+        if (key > 8) {
+          renderTemplate(`.board__tasks`, card(getTasc()));
+          document.getElementById(`load-more`).style.display = `none`;
+        }
+      }
+    });
+  });
+
 };
 
-export {
-  render as renderTemplate
-};
+export {render as renderTemplate};

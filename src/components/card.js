@@ -1,5 +1,7 @@
-const templateCard = () => {
-  return `<article class="card card--black">
+const templateCard = (dataCard) => {
+
+  return `<article class="card card--${dataCard.color} 
+  ${Object.keys(dataCard.repeatingDays).some((day)=>dataCard.repeatingDays[day]) ? `card--repeat` : ``}">
   <div class="card__form">
   <div class="card__inner">
     <div class="card__control">
@@ -24,7 +26,7 @@ const templateCard = () => {
     </div>
 
     <div class="card__textarea-wrap">
-      <p class="card__text">Example default task with default color.</p>
+      <p class="card__text">${dataCard.description}.</p>
     </div>
 
     <div class="card__settings">
@@ -32,31 +34,18 @@ const templateCard = () => {
         <div class="card__dates">
           <div class="card__date-deadline">
             <p class="card__input-deadline-wrap">
-              <span class="card__date">23 September</span>
-              <span class="card__time">11:15 PM</span>
+              <span class="card__date">${new Date(dataCard.dueDate).toDateString()}</span>
             </p>
           </div>
         </div>
 
         <div class="card__hashtag">
           <div class="card__hashtag-list">
-            <span class="card__hashtag-inner">
+          ${Array.from(dataCard.tags).map((tag) => `<span class="card__hashtag-inner">
               <span class="card__hashtag-name">
-                #todo
+                #${tag}
               </span>
-            </span>
-
-            <span class="card__hashtag-inner">
-              <span class="card__hashtag-name">
-                #personal
-              </span>
-            </span>
-
-            <span class="card__hashtag-inner">
-              <span class="card__hashtag-name">
-                #important
-              </span>
-            </span>
+            </span>`).join(``)}
           </div>
         </div>
       </div>
@@ -66,4 +55,6 @@ const templateCard = () => {
   </article>`;
 };
 
-export {templateCard as card};
+export {
+  templateCard as card
+};
