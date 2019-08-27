@@ -19,27 +19,24 @@ const taskMocks = new Array(TASK_COUNT)
 
 
 const menuContainer = document.querySelector(`.main__control`);
-const searchContainer = document.querySelector(`.main`);
-const mainFilterContainer = document.querySelector(`.main`);
-const boardContainer = document.querySelector(`.main`);
-const boardFilterContainer = document.querySelector(`.board`);
-const tasksContainer = document.querySelector(`.board__tasks`);
-const loadMoreContainer = document.querySelector(`.board`);
+const siteMainContainer = document.querySelector(`.main`);
+const boardContainer = siteMainContainer.querySelector(`.board`);
+const tasksContainer = siteMainContainer.querySelector(`.board__tasks`);
 
 const renderMenu = () => {
   render(menuContainer, createElement(menu()), Position.BEFOREEND);
 };
 const renderSearch = () => {
-  render(searchContainer, createElement(search()), Position.BEFOREEND);
+  render(siteMainContainer, createElement(search()), Position.BEFOREEND);
 };
 const renderMainFilter = () => {
-  render(mainFilterContainer, createElement(mainFilter()), Position.BEFOREEND);
+  render(siteMainContainer, createElement(mainFilter()), Position.BEFOREEND);
 };
 const renderBoard = () => {
-  render(boardContainer, createElement(board()), Position.BEFOREEND);
+  render(siteMainContainer, createElement(board()), Position.BEFOREEND);
 };
 const renderBoardFilter = () => {
-  render(boardFilterContainer, createElement(boardFilter()), Position.BEFOREEND);
+  render(boardContainer, createElement(boardFilter()), Position.BEFOREEND);
 };
 
 const renderTask = (taskMock) => {
@@ -80,7 +77,7 @@ const renderTask = (taskMock) => {
   render(tasksContainer, task.getElement(), Position.BEFOREEND);
 };
 const renderLoadMore = () => {
-  render(loadMoreContainer, createElement(loadMore()), Position.BEFOREEND);
+  render(boardContainer, createElement(loadMore()), Position.BEFOREEND);
 };
 
 renderMenu();
