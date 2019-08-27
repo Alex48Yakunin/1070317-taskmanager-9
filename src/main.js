@@ -27,19 +27,19 @@ const tasksContainer = document.querySelector(`.board__tasks`);
 const loadMoreContainer = document.querySelector(`.board`);
 
 const renderMenu = () => {
-  render(menuContainer, createElement(menu), Position.BEFOREEND);
+  render(menuContainer, createElement(menu()), Position.BEFOREEND);
 };
 const renderSearch = () => {
-  render(searchContainer, createElement(search), Position.BEFOREEND);
+  render(searchContainer, createElement(search()), Position.BEFOREEND);
 };
 const renderMainFilter = () => {
-  render(mainFilterContainer, createElement(mainFilter), Position.BEFOREEND);
+  render(mainFilterContainer, createElement(mainFilter()), Position.BEFOREEND);
 };
 const renderBoard = () => {
-  render(boardContainer, createElement(board), Position.BEFOREEND);
+  render(boardContainer, createElement(board()), Position.BEFOREEND);
 };
 const renderBoardFilter = () => {
-  render(boardFilterContainer, createElement(boardFilter), Position.BEFOREEND);
+  render(boardFilterContainer, createElement(boardFilter()), Position.BEFOREEND);
 };
 
 const renderTask = (taskMock) => {
@@ -80,7 +80,7 @@ const renderTask = (taskMock) => {
   render(tasksContainer, task.getElement(), Position.BEFOREEND);
 };
 const renderLoadMore = () => {
-  render(loadMoreContainer, createElement(loadMore), Position.BEFOREEND);
+  render(loadMoreContainer, createElement(loadMore()), Position.BEFOREEND);
 };
 
 renderMenu();

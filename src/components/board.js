@@ -2,7 +2,7 @@ const board = () => {
   return `<section class="board container">
    <div class="board__tasks">
    </div>
-   </section>`;
+   </section>`.trim();
 };
 
 export {board};

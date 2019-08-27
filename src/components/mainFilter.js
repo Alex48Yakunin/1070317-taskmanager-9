@@ -66,7 +66,7 @@ const mainFilter = () => {
 <label for="filter__archive" class="filter__label"
   >Archive <span class="filter__archive-count">115</span></label
 >
-</section>`;
+</section>`.trim();
 };
 
 export {mainFilter};

@@ -79,7 +79,7 @@ class Task {
                   </div>
                 </div>
               </div>
-            </article>`;
+            </article>`.trim();
   }
 }
 

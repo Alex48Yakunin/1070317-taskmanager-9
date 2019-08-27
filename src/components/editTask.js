@@ -265,7 +265,7 @@ class TaskEdit {
                   </div>
                 </div>
               </form>
-            </article>`;
+            </article>`.trim();
   }
 }
 
