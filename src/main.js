@@ -18,7 +18,7 @@ const taskMocks = new Array(TASK_COUNT)
   .map(getTask);
 
 
-const menuContainer = document.querySelector(`.main`);
+const menuContainer = document.querySelector(`.main__control`);
 const searchContainer = document.querySelector(`.main`);
 const mainFilterContainer = document.querySelector(`.main`);
 const boardContainer = document.querySelector(`.main`);
