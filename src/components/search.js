@@ -1,4 +1,4 @@
-const templateSearch = () => {
+const search = () => {
   return `<section class="main__search search container">
   <input
     type="text"
@@ -10,4 +10,4 @@ const templateSearch = () => {
   </section>`;
 };
 
-export {templateSearch as search};
+export {search};

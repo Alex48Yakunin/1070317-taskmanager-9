@@ -1,10 +1,46 @@
 import {Task} from './components/task';
+import {menu} from './components/menu';
+import {search} from './components/search';
+import {mainFilter} from './components/mainFilter';
+import {boardFilter} from './components/boardFilter';
+import {board} from './components/board';
+import {loadMore} from './components/loadMore';
 import {TaskEdit} from './components/editTask';
 import {getTask} from './components/data';
-import {Position, render} from './components/utils';
+import {Position, render, createElement} from './components/utils';
 
 
 const TASK_COUNT = 3;
+
+
+const taskMocks = new Array(TASK_COUNT)
+  .fill(``)
+  .map(getTask);
+
+
+const menuContainer = document.querySelector(`.main`);
+const searchContainer = document.querySelector(`.main`);
+const mainFilterContainer = document.querySelector(`.main`);
+const boardContainer = document.querySelector(`.main`);
+const boardFilterContainer = document.querySelector(`.board`);
+const tasksContainer = document.querySelector(`.board__tasks`);
+const loadMoreContainer = document.querySelector(`.board`);
+
+const renderMenu = () => {
+  render(menuContainer, createElement(menu), Position.BEFOREEND);
+};
+const renderSearch = () => {
+  render(searchContainer, createElement(search), Position.BEFOREEND);
+};
+const renderMainFilter = () => {
+  render(mainFilterContainer, createElement(mainFilter), Position.BEFOREEND);
+};
+const renderBoard = () => {
+  render(boardContainer, createElement(board), Position.BEFOREEND);
+};
+const renderBoardFilter = () => {
+  render(boardFilterContainer, createElement(boardFilter), Position.BEFOREEND);
+};
 
 const renderTask = (taskMock) => {
   const task = new Task(taskMock);
@@ -43,11 +79,14 @@ const renderTask = (taskMock) => {
 
   render(tasksContainer, task.getElement(), Position.BEFOREEND);
 };
+const renderLoadMore = () => {
+  render(loadMoreContainer, createElement(loadMore), Position.BEFOREEND);
+};
 
-const taskMocks = new Array(TASK_COUNT)
-                .fill(``)
-                .map(getTask);
-
-const tasksContainer = document.querySelector(`.board__tasks`);
-
+renderMenu();
+renderSearch();
+renderMainFilter();
+renderBoard();
+renderBoardFilter();
 taskMocks.forEach((taskMock) => renderTask(taskMock));
+renderLoadMore();

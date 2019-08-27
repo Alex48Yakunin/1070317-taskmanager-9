@@ -1,4 +1,4 @@
-const templateMainFilter = () => {
+const mainFilter = () => {
   return `<section class="main__filter filter container">
 <input
   type="radio"
@@ -69,4 +69,4 @@ const templateMainFilter = () => {
 </section>`;
 };
 
-export {templateMainFilter as mainFilter};
+export {mainFilter};
