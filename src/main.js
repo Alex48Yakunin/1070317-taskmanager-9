@@ -20,8 +20,7 @@ const taskMocks = new Array(TASK_COUNT)
 
 const menuContainer = document.querySelector(`.main__control`);
 const siteMainContainer = document.querySelector(`.main`);
-const boardContainer = siteMainContainer.querySelector(`.board`);
-const tasksContainer = siteMainContainer.querySelector(`.board__tasks`);
+
 
 const renderMenu = () => {
   render(menuContainer, createElement(menu()), Position.BEFOREEND);
@@ -35,8 +34,17 @@ const renderMainFilter = () => {
 const renderBoard = () => {
   render(siteMainContainer, createElement(board()), Position.BEFOREEND);
 };
+
+
+renderMenu();
+renderSearch();
+renderMainFilter();
+renderBoard();
+
+const boardContainer = siteMainContainer.querySelector(`.board`);
+const tasksContainer = siteMainContainer.querySelector(`.board__tasks`);
 const renderBoardFilter = () => {
-  render(boardContainer, createElement(boardFilter()), Position.BEFOREEND);
+  render(boardContainer, createElement(boardFilter()), Position.AFTERBEGIN);
 };
 
 const renderTask = (taskMock) => {
@@ -80,10 +88,6 @@ const renderLoadMore = () => {
   render(boardContainer, createElement(loadMore()), Position.BEFOREEND);
 };
 
-renderMenu();
-renderSearch();
-renderMainFilter();
-renderBoard();
 renderBoardFilter();
 taskMocks.forEach((taskMock) => renderTask(taskMock));
 renderLoadMore();
