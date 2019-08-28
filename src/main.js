@@ -1,11 +1,11 @@
-import {Task} from './components/task';
+import Task from './components/task';
 import {menu} from './components/menu';
 import {search} from './components/search';
 import {mainFilter} from './components/mainFilter';
 import {boardFilter} from './components/boardFilter';
 import {board} from './components/board';
 import {loadMore} from './components/loadMore';
-import {TaskEdit} from './components/editTask';
+import TaskEdit from './components/editTask';
 import {getTask} from './components/data';
 import {Position, render, createElement} from './components/utils';
 
