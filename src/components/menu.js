@@ -1,5 +1,6 @@
+// import {createElement} from './utils';
 
-const templateMenu = () => {
+const menu = () => {
   return `<section class="control__btn-wrap">
 <input
   type="radio"
@@ -27,8 +28,7 @@ const templateMenu = () => {
 <label for="control__statistic" class="control__label"
   >STATISTICS</label
 >
-</section>`;
+</section>`.trim();
 
 };
-
-export {templateMenu as menu};
+export {menu};

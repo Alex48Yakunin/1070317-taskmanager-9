@@ -1,4 +1,4 @@
-const templateMainFilter = () => {
+const mainFilter = () => {
   return `<section class="main__filter filter container">
 <input
   type="radio"
@@ -66,7 +66,7 @@ const templateMainFilter = () => {
 <label for="filter__archive" class="filter__label"
   >Archive <span class="filter__archive-count">115</span></label
 >
-</section>`;
+</section>`.trim();
 };
 
-export {templateMainFilter as mainFilter};
+export {mainFilter};
