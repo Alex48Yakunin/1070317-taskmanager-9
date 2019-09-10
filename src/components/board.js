@@ -1,8 +1,8 @@
-const board = () => {
-  return `<section class="board container">
-   <div class="board__tasks">
-   </div>
-   </section>`.trim();
-};
+import {AbstractComponent} from './AbstractComponent';
 
-export {board};
+class Board extends AbstractComponent {
+  getTemplate() {
+    return `<section class="board container"></section>`;
+  }
+}
+export {Board};

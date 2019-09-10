@@ -21,10 +21,15 @@ const render = (container, element, place) => {
   }
 };
 
+const Key = {
+  ESCAPE_IE: `Escape`,
+  ESCAPE: `Esc`,
+};
+
 const unrender = (element) => {
   if (element) {
     element.remove();
   }
 };
 
-export {Position, createElement, render, unrender};
+export {Position, createElement, render, unrender, Key};
