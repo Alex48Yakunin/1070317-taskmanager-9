@@ -70,7 +70,6 @@ class BoardController {
     if (evt.target.tagName !== `A`) {
       return;
     }
-
     this._taskList.getElement().innerHTML = ``;
 
     switch (evt.target.dataset.sortType) {
