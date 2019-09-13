@@ -23,17 +23,14 @@ const renderSearch = () => {
 const renderMainFilter = () => {
   render(siteMainContainer, createElement(mainFilter()), Position.BEFOREEND);
 };
-
 renderMenu();
 renderSearch();
 renderMainFilter();
 
-const boardContainer = siteMainContainer.querySelector(`.board`);
-const tasksContainer = siteMainContainer.querySelector(`.board__tasks`);
-const boardController = new BoardController(tasksContainer, taskMocks);
+const boardController = new BoardController(siteMainContainer, taskMocks);
 boardController.init();
+const boardContainer = siteMainContainer.querySelector(`.board`);
 const renderLoadMore = () => {
   render(boardContainer, createElement(loadMore()), Position.BEFOREEND);
 };
 renderLoadMore();
-
