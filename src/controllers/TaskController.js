@@ -1,6 +1,9 @@
 import {Task} from '../components/Task';
 import {TaskEdit} from '../components/TaskEdit';
 import {Position, render, Key} from '../components/utils';
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
+import 'flatpickr/dist/themes/light.css';
 
 class TaskController {
   constructor(container, data, onChangeView, onDataChange) {
@@ -59,7 +62,7 @@ class TaskController {
 
     this._taskEdit.getElement()
         .querySelector(`.card__save`)
-        .addEventListener(`click`, (evt) => {
+        .addEventListener(`click`, () => {
 
           const formData = new FormData(this._taskEdit.getElement().querySelector(`.card__form`));
 

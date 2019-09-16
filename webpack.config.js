@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require(`path`);
 const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
 
@@ -17,7 +18,15 @@ module.exports = {
   },
   plugins: [
     new MomentLocalesPlugin({
-      LocalesToKeep: [`es-us`]
+      localesToKeep: [`es-us`],
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [`style-loader`, `css-loader`],
+      }
+    ]
+  },
 };

@@ -29,7 +29,7 @@ class BoardController {
     .addEventListener(`click`, (evt) => this._onSortLinkClick(evt));
   }
 
-  _renderBoard(tasks) {
+  _renderBoard() {
     unrender(this._taskList.getElement());
 
     this._taskList.removeElement();
