@@ -1,9 +1,9 @@
 import {Board} from '../components/Board';
 import {Sort} from '../components/Sort';
 import {TaskList} from '../components/TaskList';
-import {Task} from '../components/Task';
-import {TaskEdit} from '../components/TaskEdit';
-import {Position, render, Key} from '../components/utils';
+import {Position, render, unrender} from '../components/utils';
+import {TaskController} from './TaskController';
+// import {moment} from 'moment';
 
 class BoardController {
   constructor(container, tasks) {
@@ -12,6 +12,10 @@ class BoardController {
     this._board = new Board();
     this._sort = new Sort();
     this._taskList = new TaskList();
+
+    this._subscriptions = [];
+    this._onChangeView = this._onChangeView.bind(this);
+    this._onDataChange = this._onDataChange.bind(this);
   }
 
   init() {
@@ -22,46 +26,32 @@ class BoardController {
     this._tasks.forEach((taskMock) => this._renderTask(taskMock));
 
     this._sort.getElement()
-      .addEventListener(`click`, (evt) => this._onSortLinkClick(evt));
+    .addEventListener(`click`, (evt) => this._onSortLinkClick(evt));
+  }
+
+  _renderBoard(tasks) {
+    unrender(this._taskList.getElement());
+
+    this._taskList.removeElement();
+    render(this._board.getElement(), this._taskList.getElement(), Position.BEFOREEND);
+    this._tasks.forEach((taskMock) => this._renderTask(taskMock));
+  }
+
+  _onChangeView() {
+    this._subscriptions.forEach((it) => it());
   }
 
   _renderTask(task) {
-    const taskComponent = new Task(task);
-    const taskEditComponent = new TaskEdit(task);
+    const taskController = new TaskController(this._taskList, task, this._onChangeView, this._onDataChange);
+    this._subscriptions.push(taskController.setDefaultView.bind(taskController));
 
-    const onEscKeyDown = (evt) => {
-      if (evt.key === Key.ESCAPE || evt.key === Key.ESCAPE_IE) {
-        this._taskList.getElement().replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
-        document.removeEventListener(`keydown`, onEscKeyDown);
-      }
-    };
+  }
 
-    taskComponent.getElement()
-      .querySelector(`.card__btn--edit`)
-      .addEventListener(`click`, () => {
-        this._taskList.getElement().replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
-        document.addEventListener(`keydown`, onEscKeyDown);
-      });
+  _onDataChange(newData, oldData) {
+    this._tasks[this._tasks.findIndex((it2) => it2 === oldData)] = newData;
 
-    taskEditComponent.getElement().querySelector(`textarea`)
-      .addEventListener(`focus`, () => {
-        document.removeEventListener(`keydown`, onEscKeyDown);
-      });
+    this._renderBoard(this._tasks);
 
-    taskEditComponent.getElement().querySelector(`textarea`)
-      .addEventListener(`blur`, () => {
-        document.addEventListener(`keydown`, onEscKeyDown);
-      });
-
-    taskEditComponent.getElement()
-      .querySelector(`.card__save`)
-      .addEventListener(`click`, (evt) => {
-        evt.preventDefault();
-        this._taskList.getElement().replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
-        document.removeEventListener(`keydown`, onEscKeyDown);
-      });
-
-    render(this._taskList.getElement(), taskComponent.getElement(), Position.BEFOREEND);
   }
 
   _onSortLinkClick(evt) {
@@ -70,6 +60,7 @@ class BoardController {
     if (evt.target.tagName !== `A`) {
       return;
     }
+
     this._taskList.getElement().innerHTML = ``;
 
     switch (evt.target.dataset.sortType) {

@@ -1,5 +1,4 @@
 import {AbstractComponent} from './AbstractComponent';
-
 class Task extends AbstractComponent {
   constructor({
     description,
@@ -72,6 +71,7 @@ class Task extends AbstractComponent {
               </div>
             </article>`.trim();
   }
+
 }
 
 export {Task};
